@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <script src="./promise_wy2.js"></script>
+    <script>
+        //  1:Does pass param? Yes  2:Does assign this pointer ? Yes
+        var cons = container("stopOnFalse once memory");
+
+        // var cons = container({
+        //     stopOnFalse: true
+        // });
+       
+        function fn1(message){
+            console.log(message)
+            console.log(1)
+            return true
+        }
+
+        function fn2(message){
+
+            console.log(2)
+            return true
+        }
+
+
+        function fn3(message){
+
+            console.log(3)
+            return true
+        }
+
+        function fn4(message){
+
+            console.log(4)
+            console.log(message)
+
+            return true
+        }
+
+        function fn5(message){
+
+            console.log(5)
+            console.log(message)
+
+            return true
+        }
+
+       // cons.add(function(){console.log(1)})
+        // cons.add(function(){console.log(11)},function(){console.log(12)})
+        // cons.add([function(){console.log(22)},function(){console.log(23)}])
+
+       // cons.add(fn,fn2,fn3)
+
+        cons.add(fn1,fn2)
+        cons.startup('hello container');
+
+       
+
+        cons.add(fn4)
+
+        cons.add(fn5)
+
+        cons.add(fn5)
+
+        // cons.add(fn5)
+
+
+  
+        // flags : once, memory, stopOnFalse
+
+    </script>
+</body>
+</html>
