@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div></div>
+    <label for="">say</label>
+    <input type="text">
+    <button>send</button>
+
+    <script>
+        const client = new WebSocket('ws://chat.svc:8080')
+        // wss -> WebSocket Secure
+        // https - tls/ssl - tcp/ip
+        // wss - tls - tcp/ip
+
+        client.onopen= ()=>{
+            console.log('connection open')
+        }
+
+    </script>
+</body>
+</html>

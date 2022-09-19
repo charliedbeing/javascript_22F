@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+function greet(name, cb){
+    console.log("hello world");
+
+    cb(name);
+}
+
+
+function sayName(name){
+    console.log("hello world " + name);
+}
+
+setTimeout(greet, 2000, "Charlie", sayName);
+
+
+    </script>
+</body>
+</html>

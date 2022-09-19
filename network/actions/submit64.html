@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>HTML Forms</h2>
+    <div>
+        <label for="file">file:</label>
+        <input type="file" name="file" id="file"><br><br>
+        <input type="submit" value="Submit" onclick="submit()">
+    </div>
+    
+    <script>
+        let upload ={}
+
+        function submit(){
+            console.log('here',upload)
+            fetch('/submit64',{
+                method:'POST',
+                body: JSON.stringify(upload),
+                headers:{
+                    'Content-type':'application/json'
+                }
+
+            })
+        }
+
+        document.getElementById('file')
+        .addEventListener('change', e=>{
+            const files = e.target.files
+            for(let file of files){
+                const fr = new FileReader()
+                fr.readAsDataURL(file)
+                fr.onload= ()=>{ 
+                    console.log(fr.result)
+                    upload.data = fr.result.substr(22)
+                    upload.name = file.name
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
