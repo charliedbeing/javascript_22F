@@ -3,7 +3,8 @@ import { SearchPannel } from "./search-panel"
 import { useEffect, useState } from "react"
 import React from 'react'
 import { cleanObject } from "../../utils"
-import qs from 'qs'
+// import qs from 'qs'
+import * as qs from "qs";
 
 import { useMount ,useDebounce } from '../../utils/index'
 
@@ -20,10 +21,7 @@ export const ProjectListScreen =()=>{
         personId:''
     })
 
-    const debounceParam = useDebounce(param,2000)
-
-    console.log(debounceParam.constructor)
-
+    const debounceParam = useDebounce(param,400)
     
     const [users,setUsers] = useState([])
 
