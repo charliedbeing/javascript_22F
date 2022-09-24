@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 
+/web229/react/react_jira
 **/node_modules
 
 # testing
