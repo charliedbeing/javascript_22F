@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react"
 
 
-export const isFalsy = (value: any)=> value === 0 ? false: !value
+export const isFalsy = (value: any):boolean => value === 0 ? false: !value
 
 //
 export const cleanObject = (object: object)=>{
@@ -28,7 +28,8 @@ export const useMount =(callback:()=>void )=>{
     },[])
 }
 
-export const useDebounce = (value: any,delay?:number)=>{
+// 后面用 泛型来 改进
+export const useDebounce = (value: unknown,delay?:number):any=>{
 
     const [debounceValue,setDebounceValue] = useState(value);
 
