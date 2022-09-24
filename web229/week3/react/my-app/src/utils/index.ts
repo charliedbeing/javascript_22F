@@ -29,7 +29,7 @@ export const useMount =(callback:()=>void )=>{
 }
 
 // 后面用 泛型来 改进
-export const useDebounce = (value: unknown,delay?:number):any=>{
+export const useDebounce =<V> (value: V,delay?:number):V=>{
 
     const [debounceValue,setDebounceValue] = useState(value);
 
