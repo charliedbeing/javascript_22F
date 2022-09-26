@@ -44,3 +44,23 @@ export const useDebounce =<V> (value: V,delay?:number):V=>{
     return debounceValue
 }
 
+
+export const useArray= (persons:{name:string,age:number}[])=>{
+
+    const[value,setValue] = useState(persons)
+
+    const clear = ()=>{
+       setValue([])
+    }
+    const removeIndex= (index:number)=>{
+        value.splice(index,1)
+        setValue([...value])
+    }
+    const add= (person:{name:string, age:number})=>{
+        value.push(person)
+        setValue([...value])
+
+    }
+    return {value,clear,removeIndex,add}
+
+}
