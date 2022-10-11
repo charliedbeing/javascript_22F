@@ -18,7 +18,7 @@ MongoClient.connect(url,function(err,db){
     //     console.log('collection created')
     // })
 
-    var myobj = { name: "菜鸟教程", url: "www.runoob" };
+    var myobj = { name: "菜鸟教程2", url: "www.runoob2" };
     dbase.collection('cats').insertOne(myobj,(err,res)=>{
         if (err) throw err;
         console.log("文档插入成功");
@@ -28,30 +28,32 @@ MongoClient.connect(url,function(err,db){
 })
 
 
-async function main(){
 
-    const conn = await mongoose.createConnection('mongodb://localhost:27017/charlie').asPromise();
-    console.log(conn.readyState); 
 
-    const kittySchema = new mongoose.Schema({
-        name:String
-    })
+// async function main(){
 
-    kittySchema.methods.speak = function speak(){
-        const greeting = this.name ? "Meom name is " + this.name :"I don't have a name"
-        cl(greeting)
-    }
+//     const conn = await mongoose.createConnection('mongodb://localhost:27017/charlie').asPromise();
+//     console.log(conn.readyState); 
 
-    const Kitten = mongoose.model('Kitten', kittySchema);
+//     const kittySchema = new mongoose.Schema({
+//         name:String
+//     })
 
-    const fulffy = new Kitten({name:'fluffy'})
-    await fulffy.save();
+//     kittySchema.methods.speak = function speak(){
+//         const greeting = this.name ? "Meom name is " + this.name :"I don't have a name"
+//         cl(greeting)
+//     }
 
-    fulffy.speak();
+//     const Kitten = mongoose.model('Kitten', kittySchema);
 
-    const kittens = await Kitten.find();
+//     const fulffy = new Kitten({name:'fluffy'})
+//     await fulffy.save();
 
-    cl('find from db.. ::', kittens)
-}
+//     fulffy.speak();
+
+//     const kittens = await Kitten.find();
+
+//     cl('find from db.. ::', kittens)
+// }
 
 // 

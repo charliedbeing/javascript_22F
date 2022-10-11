@@ -24,11 +24,11 @@ let apiUrl = process.env.REACT_APP_API_URL
 
 // console.log(process.env)
 
-apiUrl='http://localhost:3001'
+apiUrl='http://localhost:3000'
 
 const login=(param:{username:string, password:string})=>{
 
-    fetch(`${apiUrl}/login?`,{
+    fetch(`${apiUrl}/register?`,{
         method:'POST',
         headers:{
             'Content-type':'application/json'
@@ -58,6 +58,6 @@ export const LoginScreen =()=>{
             <label htmlFor="password">Password:</label>
             <input type="text" id={'password'} />
         </div>
-        <button type={"submit"}>Login</button>
+        <button type={"submit"}>Register</button>
     </form>
 }

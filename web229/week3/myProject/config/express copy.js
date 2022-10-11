@@ -1,3 +1,32 @@
+// var express = require("express");
+
+// // module.exports = function () {
+// //   var app = express();
+// //   require("../app/routes/index.server.routes.js")(app);
+// //   return app;
+// // };
+
+// const morgan = require("morgan");
+// const compress = require("compression");
+// const methodoverride = require("method-override");
+// const bodyParser = require("body-parser");
+
+// module.exports = function () {
+//   var app = express();
+
+//   if (process.env.NODE_ENV == "development") {
+//     app.use(morgan("dev"));
+//   } else if (process.env.NODE_ENV == "production") {
+//     app.use(compress());
+//   }
+
+//   app.use(bodyParser.urlencoded({ extended: true }));
+
+//   app.use(bodyParser.json());
+//   app.use(methodoverride());
+//   require("../app/routes/index.server.routes.js")(app);
+//   return app;
+// };
 
 var express = require("express"),
   morgan = require("morgan"),
@@ -16,7 +45,15 @@ const mypassword="123"
 module.exports = function () {
   var app = express();
 
-
+  //session middleware
+app.use(
+  sessions({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    saveUninitialized: true,
+    cookie: { maxAge: oneDay },
+    resave: false,
+  })
+);
 
   if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
@@ -31,23 +68,9 @@ module.exports = function () {
   app.use(bodyParser.json());
   app.use(methodOverride());
   
-
-    //session middleware
-app.use(
-  sessions({
-    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
-    saveUninitialized: true,
-    cookie: { maxAge: oneDay },
-    resave: true,
-  })
-);
-
   app.set("views", "./app/views");
   app.set("view engine", "ejs");
-
   require("../app/routes/index.server.routes.js")(app);
-  require("../app/routes/users.server.routes.js")(app);
-
 
   app.use(express.static("./public")); //to servre static files
 
@@ -81,8 +104,6 @@ app.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
-
-
 
   return app;
 };

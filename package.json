@@ -26,5 +26,8 @@
     "nodemon": "^2.0.19",
     "parse-headers": "^2.0.5",
     "socket.io": "^4.5.2"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
